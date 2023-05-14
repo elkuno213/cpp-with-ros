@@ -78,7 +78,7 @@ find_package(catkin REQUIRED COMPONENTS
   map_msgs
   actionlib_msgs
   actionlib
-  genmsg
+  message_generation
 )
 
 # Add include directories.

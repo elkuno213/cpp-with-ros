@@ -22,7 +22,7 @@ find_dependency(geometry_msgs REQUIRED NO_MODULE)
 find_dependency(map_msgs REQUIRED NO_MODULE)
 find_dependency(actionlib_msgs REQUIRED NO_MODULE)
 find_dependency(actionlib REQUIRED NO_MODULE)
-find_dependency(genmsg REQUIRED NO_MODULE)
+find_dependency(message_generation REQUIRED NO_MODULE)
 
 
 # labels the packages as found or not
