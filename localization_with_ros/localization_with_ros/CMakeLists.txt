@@ -11,8 +11,7 @@ target_include_directories(${PROJECT_NAME}
     $<INSTALL_INTERFACE:include>
 )
 target_link_libraries(${PROJECT_NAME} PUBLIC
-  ${roscpp_LIBRARIES}
-  ${sensor_msgs_LIBRARIES}
+  ${catkin_LIBRARIES}
 )
 
 

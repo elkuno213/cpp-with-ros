@@ -4,15 +4,13 @@
 # Build an executable that provides some data (talking)
 add_executable(talker_node ${CMAKE_CURRENT_SOURCE_DIR}/talker_node.cpp)
 target_link_libraries(talker_node PUBLIC
-  ${roscpp_LIBRARIES}
-  ${std_msgs_LIBRARIES}
+  ${catkin_LIBRARIES}
 )
 
 # Build an executable that receives some data (listening)
 add_executable(listener_node ${CMAKE_CURRENT_SOURCE_DIR}/listener_node.cpp)
 target_link_libraries(listener_node PUBLIC
-  ${roscpp_LIBRARIES}
-  ${std_msgs_LIBRARIES}
+  ${catkin_LIBRARIES}
 )
 
 # Build an executable that use existing messages.
@@ -33,15 +31,16 @@ add_dependencies(use_custom_srv ${PROJECT_NAME}_generate_messages)
 
 # Build action executables of client and server
 add_executable(actionclient ${CMAKE_CURRENT_SOURCE_DIR}/actionclient.cpp)
-target_link_libraries(actionclient ${actionlib_LIBRARIES})
+target_link_libraries(actionclient
+  ${catkin_LIBRARIES}
+)
 add_dependencies(actionclient ${PROJECT_NAME}_generate_messages)
 
 add_executable(actionserver ${CMAKE_CURRENT_SOURCE_DIR}/actionserver.cpp)
-target_link_libraries(actionserver ${actionlib_LIBRARIES})
+target_link_libraries(actionserver
+  ${catkin_LIBRARIES}
+)
 add_dependencies(actionserver ${PROJECT_NAME}_generate_messages)
-
-
-
 
 # ──────────────────────────────────────────────────────────────────────────── #
 # Installation #
@@ -49,7 +48,7 @@ add_dependencies(actionserver ${PROJECT_NAME}_generate_messages)
 # Install libs and binaries that are related to ROS (e.g. nodes)
 install(
   TARGETS talker_node listener_node
-  EXPORT  ${PROJECT_NAME}Targets
+  EXPORT ${PROJECT_NAME}Targets
   ARCHIVE DESTINATION ${ROS_INSTALL_LIBDIR}
   LIBRARY DESTINATION ${ROS_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${ROS_INSTALL_LIBDIR}
@@ -57,9 +56,9 @@ install(
 
 # Install binaries that are not related to ROS
 install(
-  TARGETS use_existing_msg  use_custom_msg
-          use_existing_srv  use_custom_srv
-          actionclient      actionserver
-  EXPORT  ${PROJECT_NAME}Targets
+  TARGETS use_existing_msg use_custom_msg
+  use_existing_srv use_custom_srv
+  actionclient actionserver
+  EXPORT ${PROJECT_NAME}Targets
   RUNTIME DESTINATION ${ROS_INSTALL_BINDIR}
 )

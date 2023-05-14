@@ -69,23 +69,20 @@ find_package(Python REQUIRED COMPONENTS Interpreter Development)
 set(CATKIN_ENABLE_TESTING OFF)
 set(PYTHON_EXECUTABLE ${Python_EXECUTABLE}) # For catkin
 set(ENV{ROS_LANG_DISABLE} "geneus:genlisp:gennodejs") # Do NOT generate messages in Euslisp, Lisp, JavaScript
-find_package(catkin REQUIRED)
-find_package(roscpp REQUIRED)
-find_package(rosbag REQUIRED)
-find_package(std_msgs REQUIRED)
-find_package(sensor_msgs REQUIRED)
-find_package(geometry_msgs REQUIRED)
-find_package(map_msgs REQUIRED)
-find_package(actionlib_msgs REQUIRED)
-find_package(actionlib REQUIRED)
-find_package(genmsg REQUIRED)
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  rosbag
+  std_msgs
+  sensor_msgs
+  geometry_msgs
+  map_msgs
+  actionlib_msgs
+  actionlib
+  genmsg
+)
 
 # Add include directories.
-include_directories(${roscpp_INCLUDE_DIRS})
-include_directories(${rosbag_INCLUDE_DIRS})
-include_directories(${std_msgs_INCLUDE_DIRS})
-include_directories(${sensor_msgs_INCLUDE_DIRS})
-include_directories(${actionlib_INCLUDE_DIRS})
+include_directories(${catkin_INCLUDE_DIRS})
 
 
 
