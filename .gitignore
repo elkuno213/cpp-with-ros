@@ -1,0 +1,6 @@
+# Ignore
+.vscode/settings.json
+install
+build
+
+# Keep

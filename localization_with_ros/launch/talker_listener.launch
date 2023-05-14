@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="localization_with_ros" type="talker"   name="talker"   output="screen"/>
+  <node pkg="localization_with_ros" type="listener" name="listener" output="screen"/>
+</launch>
